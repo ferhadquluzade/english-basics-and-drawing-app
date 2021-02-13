@@ -1,3 +1,4 @@
+import 'package:engapp/Screens/Paint/canvas.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import "package:flutter/material.dart";
 
@@ -22,23 +23,22 @@ class _LettersScreenState extends State<LettersScreen> {
     tts.speak(text);
     tts.setVolume(1.0);
   }
-
+    @override
+    void initState() {
+      super.initState();
+      speak("A");
+    }
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    speak("A");
-  }
     return Scaffold(
       body: Container(
-        decoration:BoxDecoration(gradient: LinearGradient(colors: [Colors.pinkAccent,Colors.blueAccent],begin: Alignment.topLeft,end:Alignment.bottomRight),
-   
-        
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+        colors: [Colors.pinkAccent, Colors.blueAccent],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight),
         ),
-
         width: size.width,
         height: size.height,
         child: Column(
@@ -64,6 +64,7 @@ class _LettersScreenState extends State<LettersScreen> {
                 ),
               ],
             ),
+            ClipRRect(borderRadius:BorderRadius.all(Radius.circular(30)),child: Container(child: Container(width:size.width,height:size.height*0.28,child: CustomCanvas())))
           ],
         ),
       ),
