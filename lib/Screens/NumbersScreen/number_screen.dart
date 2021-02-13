@@ -1,3 +1,4 @@
+import 'package:engapp/Screens/Paint/canvas.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_tts/flutter_tts.dart';
 
@@ -29,6 +30,7 @@ class _NumberScreenState extends State<NumberScreen> {
   }
   @override
   Widget build(BuildContext context) {
+    Size size=MediaQuery.of(context).size;
     return Scaffold(
       body: Container(        decoration:BoxDecoration(gradient: LinearGradient(colors: [Colors.yellowAccent,Colors.blueAccent],begin: Alignment.topLeft,end:Alignment.bottomRight),
    
@@ -37,28 +39,33 @@ class _NumberScreenState extends State<NumberScreen> {
 
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        child: Column(
+        child: Stack(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            Column(
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width / 2,
-                  height: MediaQuery.of(context).size.height / 2,
-                  child: CircleAvatar(
-                      backgroundColor: Colors.yellowAccent,
-                      child: GestureDetector(
-                          onLongPress: () {
-                            setState(() {
-                              if (number.indx != 48) {
-                                number.indx -= 1;
-                              }
-                              speak("${String.fromCharCode(number.indx)}");
-                            });
-                          },
-                          child: Text("${String.fromCharCode(number.indx)}",
-                              style: TextStyle(fontSize: 75)))),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width / 2,
+                      height: MediaQuery.of(context).size.height / 2,
+                      child: CircleAvatar(
+                          backgroundColor: Colors.yellowAccent,
+                          child: GestureDetector(
+                              onLongPress: () {
+                                setState(() {
+                                  if (number.indx != 48) {
+                                    number.indx -= 1;
+                                  }
+                                  speak("${String.fromCharCode(number.indx)}");
+                                });
+                              },
+                              child: Text("${String.fromCharCode(number.indx)}",
+                                  style: TextStyle(fontSize: 75)))),
+                    ),
+                  ],
                 ),
+                ClipRRect(borderRadius:BorderRadius.all(Radius.circular(30)),child: Container(child: Container(width:size.width,height:size.height*0.28,child: CustomCanvas())))
               ],
             ),
           ],
@@ -71,7 +78,7 @@ class _NumberScreenState extends State<NumberScreen> {
         onPressed: () {
           setState(() {
             number.indx += 1;
-            if (number.indx == 58) {
+            if (number.indx == 64) {
               number.indx = 48;
             }
           });
