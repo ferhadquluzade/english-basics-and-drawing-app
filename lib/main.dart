@@ -1,8 +1,9 @@
 import 'package:engapp/Screens/LettersScreen/letters_screen.dart';
 import 'package:engapp/Screens/NumbersScreen/number_screen.dart';
-import 'package:engapp/Screens/Paint/canvas.dart';
 
 import 'package:flutter/material.dart';
+
+import 'Screens/WordsScreen/words_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
         });
       } else if (indx == 2) {
         setState(() {
-          screen = CustomCanvas();
+          screen = WordsScreen();
         });
       } else {
         setState(() {
@@ -53,18 +54,18 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.edit),
+              icon: Icon(Icons.text_fields),
               backgroundColor: Colors.blue,
               label: "Letters"),
           BottomNavigationBarItem(
             icon: Icon(Icons.format_list_numbered),
-            backgroundColor: Colors.yellowAccent,
+            backgroundColor: Colors.yellow[500],
             label: "Numbers",
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.brush),
-              backgroundColor: Colors.green[600],
-              label: "Draw")
+              icon: Icon(Icons.text_format),
+              backgroundColor: Colors.lightGreen[500],
+              label: "Words")
         ],
         onTap: changePage,
         currentIndex: _cur_indx,
