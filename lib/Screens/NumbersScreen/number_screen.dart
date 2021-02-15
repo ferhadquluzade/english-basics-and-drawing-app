@@ -22,21 +22,25 @@ class _NumberScreenState extends State<NumberScreen> {
     tts.speak(text);
     tts.setVolume(1.0);
   }
-@override
+
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
     speak("0");
   }
+
   @override
   Widget build(BuildContext context) {
-    Size size=MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Container(        decoration:BoxDecoration(gradient: LinearGradient(colors: [Colors.yellowAccent,Colors.blueAccent],begin: Alignment.topLeft,end:Alignment.bottomRight),
-   
-        
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              colors: [Colors.yellowAccent, Colors.blueAccent],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight),
         ),
-
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Stack(
@@ -50,7 +54,6 @@ class _NumberScreenState extends State<NumberScreen> {
                       width: MediaQuery.of(context).size.width / 2,
                       height: MediaQuery.of(context).size.height / 2,
                       child: CircleAvatar(
-                          backgroundColor: Colors.yellowAccent,
                           child: GestureDetector(
                               onLongPress: () {
                                 setState(() {
@@ -65,14 +68,20 @@ class _NumberScreenState extends State<NumberScreen> {
                     ),
                   ],
                 ),
-                ClipRRect(borderRadius:BorderRadius.all(Radius.circular(30)),child: Container(child: Container(width:size.width,height:size.height*0.28,child: CustomCanvas())))
+                ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                    child: Container(
+                        child: Container(
+                            width: size.width,
+                            height: size.height * 0.28,
+                            child: CustomCanvas())))
               ],
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.yellowAccent,
+        backgroundColor: Colors.yellow[500],
         foregroundColor: Colors.black,
         child: Icon(Icons.add),
         onPressed: () {
